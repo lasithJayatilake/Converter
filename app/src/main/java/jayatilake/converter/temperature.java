@@ -61,31 +61,38 @@ public class temperature extends AppCompatActivity {
     }
 
     public void convertEnter(View view) {
-        try {
-
-
-            double valueT = new Double(temp.getText().toString());
-
-            if (fToC.isChecked())
-                valueT = fahrenheit2Celsius(valueT);
-            else if (cToF.isChecked())
-                valueT = celsius2Fahrenheit(valueT);
-            else if (kToF.isChecked())
-                valueT = kelvin2Fahrenheit(valueT);
-            else if (fToK.isChecked())
-                valueT = fahrenheit2Kelvin(valueT);
-            else if (kToC.isChecked())
-                valueT = kelvin2Celsius(valueT);
-            else
-                valueT = celsius2Kelvin(valueT);
-
-            valueT = Math.round(valueT * 10000.0) / 10000.0;
-
-            res.setText("Result : " + new Double(valueT).toString());
-        }
-        catch (Exception e)
+        
+        if (temp.getText().toString().trim().length()==0)
         {
-            res.setText(e.getMessage());
+            Toast.makeText(temperature.this,"Please Enter a value",Toast.LENGTH_LONG).show();
+        }
+        else {
+        
+            try {
+
+                double valueT = new Double(temp.getText().toString());
+
+                if (fToC.isChecked())
+                    valueT = fahrenheit2Celsius(valueT);
+                else if (cToF.isChecked())
+                    valueT = celsius2Fahrenheit(valueT);
+                else if (kToF.isChecked())
+                    valueT = kelvin2Fahrenheit(valueT);
+                else if (fToK.isChecked())
+                    valueT = fahrenheit2Kelvin(valueT);
+                else if (kToC.isChecked())
+                    valueT = kelvin2Celsius(valueT);
+                else
+                    valueT = celsius2Kelvin(valueT);
+
+                valueT = Math.round(valueT * 10000.0) / 10000.0;
+
+                res.setText("Result : " + new Double(valueT).toString());
+            }
+            catch (Exception e)
+            {
+                res.setText(e.getMessage());
+            }
         }
     }
 
