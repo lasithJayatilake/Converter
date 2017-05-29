@@ -72,6 +72,7 @@ public class mass extends AppCompatActivity {
                 micro_ans.setText("");
                 Nano_ans.setText("");
                 gram_ans.setText("");
+                Gr_input.setText("");
             }
         });
     }
